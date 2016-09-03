@@ -17,9 +17,7 @@ void fooRV(bar&& b)
 
 // Template function accept only rvalue reference parameter
 template<typename T,
-         typename = typename std::enable_if<
-                    !std::is_lvalue_reference<T>::value
-                                           >::type
+         typename = typename std::enable_if<std::is_rvalue_reference<T&&>::value>::type
         >
 void fooTRV(T&& v)
 {
